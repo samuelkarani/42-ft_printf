@@ -1,0 +1,12 @@
+*.o
+*.a
+a.out
+a.out.dSYM/
+*.sh
+.nfs*
+.vscode
+.DS_Store
+tests.c
+moretests.c
+speedtest.c
+leaks.c
