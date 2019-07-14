@@ -25,6 +25,7 @@ clean:
 fclean:
 	make fclean -C libft
 	rm -f $(OBJ)
+	rm -f libft.a
 	rm -f $(NAME)
 
 norm:
