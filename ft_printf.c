@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 20:42:30 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/04/15 21:41:09 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 00:25:34 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,11 @@ static void	handle_args(const char *format, va_list args, int *info[],
 	clear_flags(info[FLGS], NUM_FLAGS);
 }
 
-int			ft_printf(const char *format, ...)
+int			ft_print(char **res, va_list args, const char *format)
 {
 	int		*info[NUM_INFO];
 	int		count;
-	va_list	args;
-	char	buf[BUF_SIZE];
 
-	va_start(args, format);
 	create_info(info, NUM_INFO);
 	free(info[FLGS]);
 	info[FLGS] = create_flags(NUM_FLAGS);
@@ -76,13 +73,24 @@ int			ft_printf(const char *format, ...)
 	{
 		if (format[*info[INDEX]] == '%'
 			&& check_validity(format, *info[INDEX] + 1) != -1)
-			handle_args(format, args, info, buf);
+			handle_args(format, args, info, *res);
 		else if (format[*info[INDEX]] != '%')
-			update_buf(buf, &format[*info[INDEX]], 1, info);
+			update_buf(*res, &format[*info[INDEX]], 1, info);
 		(*info[INDEX])++;
 	}
-	va_end(args);
 	count = *info[COUNT];
 	destroy_info(info, NUM_INFO);
+	return (count);
+}
+
+int			ft_printf(const char * restrict format, ...)
+{
+	va_list	args;
+	char	buf[BUF_SIZE];
+	int		count;
+
+	va_start(args, format);
+	count = ft_print((char **)&buf, args, format);
+	va_end(args);
 	return (write(1, buf, count));
 }

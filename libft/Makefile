@@ -16,8 +16,9 @@ ft_strrev.c ft_strrevnew.c ft_strslice.c ft_itoa_base.c ft_putnbr_base.c ft_abs.
 ft_strnewpad.c ft_stridx.c
 OBJECTS = $(SRCS:.c=.o)
 all: $(NAME)
-$(NAME):
-	$(CC) $(CFLAGS) $(SRCS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+$(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
 	ranlib $(NAME)
 clean:
