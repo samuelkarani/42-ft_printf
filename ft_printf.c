@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 20:42:30 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/07/14 01:10:58 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 12:27:57 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			ft_print(char *res, va_list args, const char *format)
 	return (count);
 }
 
-int			ft_printf(const char * restrict format, ...)
+int			ft_printf(const char *restrict format, ...)
 {
 	va_list	args;
 	char	buf[BUF_SIZE];

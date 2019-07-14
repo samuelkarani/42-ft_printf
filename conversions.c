@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 23:35:57 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/04/16 00:43:06 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 14:13:48 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	get_mantissa(long double *n, char **tmp)
 	i = 0;
 	while (i < 18)
 	{
-		if (*n - (long long)*n == 0)
-			break ;
 		*n *= 10;
 		i++;
 	}

@@ -6,13 +6,13 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 22:10:07 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/07/14 01:27:50 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 12:28:55 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_fprintf(FILE * restrict stream, const char * restrict format, ...)
+int	ft_fprintf(FILE *restrict stream, const char *restrict format, ...)
 {
 	va_list	args;
 	char	buf[BUF_SIZE];
@@ -24,7 +24,7 @@ int	ft_fprintf(FILE * restrict stream, const char * restrict format, ...)
 	return (write(fileno(stream), buf, count));
 }
 
-int	ft_sprintf(char * restrict str, const char * restrict format, ...)
+int	ft_sprintf(char *restrict str, const char *restrict format, ...)
 {
 	va_list	args;
 	int		count;
@@ -36,7 +36,8 @@ int	ft_sprintf(char * restrict str, const char * restrict format, ...)
 	return (count);
 }
 
-int	ft_snprintf(char * restrict str, size_t size, const char * restrict format, ...)
+int	ft_snprintf(char *restrict str, size_t size,
+	const char *restrict format, ...)
 {
 	va_list	args;
 	int		count;
@@ -65,7 +66,7 @@ int	ft_asprintf(char **ret, const char *format, ...)
 	return (count);
 }
 
-int	ft_dprintf(int fd, const char * restrict format, ...)
+int	ft_dprintf(int fd, const char *restrict format, ...)
 {
 	va_list	args;
 	char	buf[BUF_SIZE];

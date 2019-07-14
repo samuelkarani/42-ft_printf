@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 19:17:07 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/07/14 01:13:25 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 14:26:15 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ char	*apply_plus(char *s, int specifier, int min_width, int base);
 char	*apply_zero(char *s, int specifier, int precision, int min_width);
 char	*apply_space(char *s, int specifier, int min_width);
 char	*apply_minus(char *s);
-char	*apply_prefix(char *s, char *prefix);
+char	*apply_prefix(char *s, char *prefix, int specifier, int precision);
 char	*apply_apostrophe(char *s, int specifier);
 char	*join_prefix(char *s, char *prefix);
 

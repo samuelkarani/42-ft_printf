@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 13:03:41 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/04/13 16:26:51 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 14:26:05 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,11 @@ char		*apply_hash(char *s, int specifier, int precision, int base)
 		free(tmp);
 	}
 	if (precision == 0 && base == 8)
-	{
-		free(s);
-		s = ft_strdup("0");
-	}
+		s = join_and_free(ft_strdup("0"), s);
 	if (specifier == P && (precision != -1 && s[0] == '0' && s[1]))
 		s = join_prefix(s, "0x");
 	if ((prefix = select_prefix(s, specifier, precision, base)))
-		s = apply_prefix(s, prefix);
+		s = apply_prefix(s, prefix, specifier, precision);
 	return (s);
 }
 
@@ -68,7 +65,7 @@ char		*apply_plus(char *s, int specifier, int min_width, int base)
 		if (min_width != -1 && s[0] == '0')
 			s[0] = '+';
 		else
-			s = apply_prefix(s, "+");
+			s = apply_prefix(s, "+", specifier, -1);
 	}
 	return (s);
 }

@@ -1,4 +1,4 @@
-CC = gcc
+CC = gcc -g
 CFLAGS = -c -Wall -Wextra -Werror
 NAME = libftprintf.a
 SRC = ft_printf.c specifier.c min_width.c precision.c flags.c \
@@ -22,8 +22,9 @@ clean:
 	make clean -C libft
 	rm -f $(OBJ)
 
-fclean: clean
+fclean:
 	make fclean -C libft
+	rm -f $(OBJ)
 	rm -f $(NAME)
 
 norm:

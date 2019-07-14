@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 13:20:14 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/04/13 20:33:29 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 14:26:39 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,15 @@ static char	*prefix_zero(char *s, char *prefix, int plen)
 	return (s);
 }
 
-char		*apply_prefix(char *s, char *prefix)
+char		*apply_prefix(char *s, char *prefix, int specifier, int precision)
 {
 	int	plen;
 	int i;
 
 	plen = ft_strlen(prefix);
 	i = 0;
+	if (specifier == X && precision > 0 && *s == '0')
+		return (join_prefix(s, prefix));
 	while (s[i] == ' ')
 		i++;
 	if (i)
