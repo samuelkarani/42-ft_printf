@@ -6,7 +6,3 @@ a.out.dSYM/
 .nfs*
 .vscode
 .DS_Store
-tests.c
-moretests.c
-speedtest.c
-leaks.c

@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 20:42:30 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/07/14 00:25:34 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 01:10:58 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	handle_args(const char *format, va_list args, int *info[],
 	clear_flags(info[FLGS], NUM_FLAGS);
 }
 
-int			ft_print(char **res, va_list args, const char *format)
+int			ft_print(char *res, va_list args, const char *format)
 {
 	int		*info[NUM_INFO];
 	int		count;
@@ -73,9 +73,9 @@ int			ft_print(char **res, va_list args, const char *format)
 	{
 		if (format[*info[INDEX]] == '%'
 			&& check_validity(format, *info[INDEX] + 1) != -1)
-			handle_args(format, args, info, *res);
+			handle_args(format, args, info, res);
 		else if (format[*info[INDEX]] != '%')
-			update_buf(*res, &format[*info[INDEX]], 1, info);
+			update_buf(res, &format[*info[INDEX]], 1, info);
 		(*info[INDEX])++;
 	}
 	count = *info[COUNT];
@@ -90,7 +90,7 @@ int			ft_printf(const char * restrict format, ...)
 	int		count;
 
 	va_start(args, format);
-	count = ft_print((char **)&buf, args, format);
+	count = ft_print(buf, args, format);
 	va_end(args);
 	return (write(1, buf, count));
 }

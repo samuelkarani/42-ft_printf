@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 22:10:07 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/07/14 00:25:00 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 01:27:50 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_fprintf(FILE * restrict stream, const char * restrict format, ...)
 	int		count;
 
 	va_start(args, format);
-	count = ft_print((char **)&buf, args, format);
+	count = ft_print(buf, args, format);
 	va_end(args);
 	return (write(fileno(stream), buf, count));
 }
@@ -30,7 +30,8 @@ int	ft_sprintf(char * restrict str, const char * restrict format, ...)
 	int		count;
 
 	va_start(args, format);
-	count = ft_print((char **)&str, args, format);
+	count = ft_print(str, args, format);
+	str[(count > MAX_INT ? MAX_INT : count) - 1] = 0;
 	va_end(args);
 	return (count);
 }
@@ -41,7 +42,7 @@ int	ft_snprintf(char * restrict str, size_t size, const char * restrict format, 
 	int		count;
 
 	va_start(args, format);
-	count = ft_print((char **)&str, args, format);
+	count = ft_print(str, args, format);
 	str[size - 1] = 0;
 	va_end(args);
 	return (count);
@@ -59,7 +60,7 @@ int	ft_asprintf(char **ret, const char *format, ...)
 		return (-1);
 	}
 	va_start(args, format);
-	count = ft_print(ret, args, format);
+	count = ft_print(*ret, args, format);
 	va_end(args);
 	return (count);
 }
@@ -71,7 +72,7 @@ int	ft_dprintf(int fd, const char * restrict format, ...)
 	int		count;
 
 	va_start(args, format);
-	count = ft_print((char **)&buf, args, format);
+	count = ft_print(buf, args, format);
 	va_end(args);
 	return (write(fd, buf, count));
 }

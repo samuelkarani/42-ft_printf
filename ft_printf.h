@@ -6,7 +6,7 @@
 /*   By: smbaabu <smbaabu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 19:17:07 by smbaabu           #+#    #+#             */
-/*   Updated: 2019/07/14 00:21:53 by smbaabu          ###   ########.fr       */
+/*   Updated: 2019/07/14 01:13:25 by smbaabu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # define S_INT 32
 # define S_LONG 64
 # define S_LONG_LONG 64
-# define BUF_SIZE 2147483647
+# define BUF_SIZE 4200
+# define MAX_INT 2147483647
 # define R_SIZE 1000
 
 # define SPECIFIERS "%cspdiouxXfbrkeg"
@@ -99,7 +100,7 @@ static const char	*g_months[] = {
 
 int		ft_printf(const char *format, ...);
 
-int		ft_print(char **res, va_list args, const char *format);
+int		ft_print(char *res, va_list args, const char *format);
 char	*apply_specifier(va_list args, int specifier, int modifier,
 		int *info[]);
 char	*apply_width(char *s, int min_width);
