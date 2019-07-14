@@ -1,5 +1,5 @@
-CC = gcc -g
-CFLAGS = -c -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 SRC = ft_printf.c specifier.c min_width.c precision.c flags.c \
 		flags2.c flags3.c conversions.c conversions2.c checks.c \
